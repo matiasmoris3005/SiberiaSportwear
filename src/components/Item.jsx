@@ -13,12 +13,12 @@ const Item = ({name, price, descripcion}) => {
             />
             <Stack mt='6' spacing='3'>
               <Heading size='md'>{name}</Heading>
-              {/* <Text color='blue.600' fontSize='2xl'>
+              <Text color='blue.600' fontSize='2xl'>
                 $ {price}
-              </Text> */}
-              {/* <Text color='blue.600' fontSize='2xl'>
+              </Text>
+              <Text color='blue.600' fontSize='2xl'>
                 {descripcion}
-              </Text> */}
+              </Text>
             </Stack>
           </CardBody>
           <Divider />
