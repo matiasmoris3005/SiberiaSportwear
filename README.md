@@ -1,1 +1,1 @@
-![Uploading gifFuncionamiento.gif…]()
+
