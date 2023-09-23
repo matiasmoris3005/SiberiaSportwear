@@ -19,14 +19,17 @@ const NavBar = () => {
                   Catálogo
                 </MenuButton>
                 <MenuList>
-                    <Link to={`/short`}>
+                    <Link to={`/category/${'shorts'}`}>
                       <MenuItem style={{ color: 'rgb(128, 128, 128)' }}>Shorts</MenuItem>
                     </Link>
-                    <Link to={`/tops`}>  
+                    <Link to={`/category/${'tops'}`}>  
                       <MenuItem style={{ color: 'rgb(128, 128, 128)' }}>Tops</MenuItem>
                     </Link>
-                    <Link to={`/calzas`}>  
+                    <Link to={`/category/${'calzas'}`}>  
                       <MenuItem style={{ color: 'rgb(128, 128, 128)' }}>Calzas</MenuItem>
+                    </Link>
+                    <Link to={`/category/${'contacto'}`}>  
+                      <MenuItem style={{ color: 'rgb(128, 128, 128)' }}>Contacto</MenuItem>
                     </Link>
                 </MenuList>
              </Menu>

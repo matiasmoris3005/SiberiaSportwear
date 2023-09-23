@@ -1,17 +1,19 @@
 import React from 'react'
-import { Card, CardBody, Image, Stack, Heading, Text, Divider, CardFooter, ButtonGroup, Button } from '@chakra-ui/react'
-import { useState } from 'react'
+import { Card, CardBody, Image, Stack, Heading, Text, Divider, CardFooter, /* ButtonGroup, Button */ } from '@chakra-ui/react'
+import { useParams } from 'react-router-dom'
 
-const ItemDetail = ({ name, price, descripcion }) => {
-  const [cantidad, setCantidad] = useState(1) 
 
-  const onAdd=()=>{
-    alert(`Agregaste al carrito ${cantidad} unidades`)
-  }
+const ItemDetail = ({ productos}) => {
+  const { id } = useParams();
+
+  const filteredProducts = productos.filter((producto)=> producto.id == id)
 
   return (
-    <>
-      <Card maxW='sm'>
+    <div>
+      {filteredProducts.map((p)=>{
+        return (
+          <div key={p.id}>
+            <Card maxW='sm'>
           <CardBody>
             <Image
               src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNheSRzMeUMfkHQM4Cr-mboEXZXKGHsWB4Xw&usqp=CAU'
@@ -19,28 +21,24 @@ const ItemDetail = ({ name, price, descripcion }) => {
               borderRadius='lg'
             />
             <Stack mt='6' spacing='3'>
-              <Heading size='md'>{name}</Heading>
+              <Heading size='md'>{p.name}</Heading>
               <Text color='blue.600' fontSize='2xl'>
-                {price}
+                {p.price}
               </Text>
               <Text color='blue.600' fontSize='2xl'>
-                {descripcion}
+                {p.descripcion}
               </Text>
             </Stack>
           </CardBody>
           <Divider />
           <CardFooter>
-            <ButtonGroup spacing='2'>
-              <Button variant='solid' colorScheme='blue' onClick={onAdd}> 
-                Agregar al carrito
-              </Button>
-              <p>{cantidad}</p>
-              <Button variant='solid' colorScheme='blue' onClick={() => setCantidad(cantidad + 1)}>Sumar</Button>
-              <Button variant='solid' colorScheme='blue' onClick={() => setCantidad(cantidad - 1)}>Restar</Button>
-            </ButtonGroup>
+            
           </CardFooter>
         </Card>
-    </>
+          </div>
+        )
+      })}
+    </div>
   )
 }
 

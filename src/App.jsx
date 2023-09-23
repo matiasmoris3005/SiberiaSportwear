@@ -2,26 +2,23 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import ItemListContainer from "./components/ItemListContainer"
 import NavBar from "./components/NavBar"
 import Cart from "./components/Cart"
-import ItemDetail from "./components/ItemDetail"
-import Tops from "./components/Tops"
-import Calzas from "./components/Calzas"
-import Short from "./components/Short"
-
+import Contacto from "./components/Contacto"
+import ItemDetailContainer from "./components/ItemDetailContainer"
 
 
 const App = () => {
   return (
     <>
     <BrowserRouter>
-    <NavBar/>
-    <ItemListContainer/>
-    <Routes>
-    <Route exact path="/cart" element={<Cart />}/>
-    <Route exact path="/calzas" element={<Calzas />}/>
-    <Route exact path="/tops" element={<Tops />}/>
-    <Route exact path="/short" element={<Short />}/>
-    <Route exact path="/product/:id" element={<ItemDetail />}/>
-    </Routes>
+      <NavBar/>
+      {/* <ItemListContainer/> */}
+      <Routes>
+       <Route exact path="/" element={<ItemListContainer />}/>
+       <Route exact path="/contacto" element={<Contacto />}/>
+       <Route exact path="/cart" element={<Cart />}/>
+       <Route exact path="/item/:id" element={<ItemDetailContainer />}/>
+       <Route exact path="/category/:categoryId" element={<ItemListContainer />}/>
+      </Routes>
     </BrowserRouter>
     </>
   )

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, CardBody, Image, Stack, Heading, Text, Divider, CardFooter, ButtonGroup, Button } from '@chakra-ui/react'
 
-const Item = ({name, price, descripcion}) => {
+const Item = ({name, id, category }) => {
   return (
     <>
         <Card maxW='sm'>
@@ -14,10 +14,7 @@ const Item = ({name, price, descripcion}) => {
             <Stack mt='6' spacing='3'>
               <Heading size='md'>{name}</Heading>
               <Text color='blue.600' fontSize='2xl'>
-                $ {price}
-              </Text>
-              <Text color='blue.600' fontSize='2xl'>
-                {descripcion}
+                {category}
               </Text>
             </Stack>
           </CardBody>
@@ -25,7 +22,9 @@ const Item = ({name, price, descripcion}) => {
           <CardFooter>
             <ButtonGroup spacing='2'>
               <Button variant='solid' colorScheme='blue'>
-                Detalle
+                <Link to={`/item/${id}`}>
+                  Detalles
+                </Link>
               </Button>
             </ButtonGroup>
           </CardFooter>
