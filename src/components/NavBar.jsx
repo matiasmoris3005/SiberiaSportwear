@@ -28,7 +28,7 @@ const NavBar = () => {
                     <Link to={`/category/${'calzas'}`}>  
                       <MenuItem style={{ color: 'rgb(128, 128, 128)' }}>Calzas</MenuItem>
                     </Link>
-                    <Link to={`/category/${'contacto'}`}>  
+                    <Link to={`/${'contacto'}`}>  
                       <MenuItem style={{ color: 'rgb(128, 128, 128)' }}>Contacto</MenuItem>
                     </Link>
                 </MenuList>

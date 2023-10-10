@@ -4,42 +4,40 @@ import { useParams } from 'react-router-dom'
 
 const ItemListContainer = () => {
   const { category } = useParams()
+  const products = [
+    { id: 1, name: "Short A", category: 'shorts', price: 6000},
+    { id: 2, name: "Short B", category: 'shorts', price: 6000},
+    { id: 3, name: "Top A", category: 'tops', price: 5000},
+    { id: 4, name: "Top B", category: 'tops', price: 5000},
+    { id: 5, name: "Calza A", category: 'calzas', price: 8000},
+    { id: 6, name: "Calza B", category: 'calzas', price: 8000}
+];
 
-    const productos = [
-        { id: 1, name: "Short A", price: 6000, descripcion: "Descripción del producto", category: 'shorts' },
-        { id: 2, name: "Short B", price: 6000, descripcion: "Descripción del producto", category: 'shorts' },
-        { id: 3, name: "Top A", price: 5000, descripcion: "Descripción del producto", category: 'tops' },
-        { id: 4, name: "Top B", price: 5000, descripcion: "Descripción del producto", category: 'tops' },
-        { id: 5, name: "Calza A", price: 8000, descripcion: "Descripción del producto", category: 'calzas' },
-        { id: 6, name: "Calza B", price: 8000, descripcion: "Descripción del producto", category: 'calzas' }
-    ]
+const mostrarProducto = new Promise ((resolve, reject) =>{
+  if (products.length > 0) {
+    setTimeout(()=>{
+      resolve({products})
+    }, 5000)
+  } else {
+    reject("No hay productos disponibles")
+  }
+})
 
-    const mostrarProducto = new Promise ((resolve, reject) =>{
-      if (productos.length > 0) {
-        setTimeout(()=>{
-          resolve({productos})
-        }, 5000)
-      } else {
-        reject("No hay productos disponibles")
-      }
-    })
+mostrarProducto
+.then((resultado)=> {
+  console.log(resultado)
+})
+.catch((error)=>{
+  console.log(error)
+})
 
-    mostrarProducto
-    .then((resultado)=> {
-      console.log(resultado)
-    })
-    .catch((error)=>{
-      console.log(error)
-    })
+const filteredProducts = products.filter((product) => product.category === category)
 
-    const filteredProducts = productos.filter((producto) => producto.category === category)
-  return (
-    <>
-      <ItemList 
-      productos={filteredProducts}
-      />
-    </>
-  )
+return (
+  <div>
+      <ItemList products={filteredProducts}/>
+  </div>
+)
 }
   
 export default ItemListContainer
